@@ -1,0 +1,16 @@
+$primary-color: #272727;
+$accent-color:#ff652f;
+$text-color:#fff;
+$font-weight: (
+    "regular":400,
+    "bold":700,
+    "bolder":800,
+    "bolditalic":800,
+    "black":900	
+);
+
+
+
+body{
+background: $primary-color;
+}
