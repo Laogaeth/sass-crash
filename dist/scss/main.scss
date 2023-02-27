@@ -1,16 +1,47 @@
-$primary-color: #272727;
-$accent-color:#ff652f;
-$text-color:#fff;
-$font-weight: (
-    "regular":400,
-    "bold":700,
-    "bolder":800,
-    "bolditalic":800,
-    "black":900	
-);
+@import './_resets';
+@import './_variables';
 
 
+@function weight ($weight-name){
+@return map-get($font-weight, $weight-name);
+}
+
+@mixin flexCenter($direction){
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: $direction;
+}
+
+//if this is true it will trigger and add the light class, if false it does nothing!
+@mixin theme ($light-theme:true){
+    @if $light-theme{
+        background: lighten($primary-color,100%);
+        color: darken($text-color,100%);
+    }
+}
+@mixin mobile{
+    @media (max-width:800px){
+        @content
+    }
+}
 
 body{
 background: $primary-color;
+}
+
+.main{
+    @include flexCenter (row);
+    width: 80%;
+    margin: 0 auto;
+    #{&}__paragraph{
+        font-weight: weight(bold);   
+     }
+     &:hover{
+        color:pink
+     }
+}
+
+.light{
+    @include theme($light-theme:true);
 }
